@@ -6,4 +6,4 @@
 <img src="Images/lights(2).jpg" width="300">
 
 #### Avatar:
-<img src="Images/withZoeAvatar.jpg" width="200">
+<img src="Images/AvatarLemon.jpg" width="200">
