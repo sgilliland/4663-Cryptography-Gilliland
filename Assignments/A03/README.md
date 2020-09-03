@@ -19,8 +19,8 @@ Now do the same for ciphertext_2.txt and substitute again based on frequency. Th
 
 ### Sources (example)
 
-- Stack overflow:
-  - https://stackoverflow.com/questions/56710282/how-to-efficiently-write-6-line-hexagrams-horizontally-at-a-capped-width
+- The Kite:
+  - https://www.kite.com/python/answers/how-to-replace-characters-in-a-string-in-python#:~:text=replace()%20to%20replace%20characters,character%20anywhere%20in%20the%20string.
 
-I used the sources to help me understand what a hexogram is, and then I used that knowledge to solve the posed problem. 
+I used the sources to help me with Python syntax for replacing characters. 
 ```
