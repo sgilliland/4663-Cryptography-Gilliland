@@ -11,16 +11,13 @@ It is not a shift cipher, so you cant brute force the shift value! So the only w
 <a href="https://cs.msutexas.edu/~griffin/zcloud/zcloud-files/frequency_4663_2020.jpg"><img src="https://cs.msutexas.edu/~griffin/zcloud/zcloud-files/frequency_4663_2020.jpg" width="600"></a>
 
 ### First (easy)
-Run a frequency analysis on the file ciphertext_1.txt and substitute each letter based on the calculated frequency using the table below. Punctuation is left for readability. All words are english words and the frequency distribution is a perfect match for the graph at the top.
+Run a frequency analysis on the file in1.txt and substitute each letter based on the calculated frequency using the table below. Punctuation is left for readability. All words are english words and the frequency distribution is a perfect match for the graph at the top.
 
 ### Second (medium)
-Now do the same for ciphertext_2.txt and substitute again based on frequency. This one doesn't line up perfectly, but close enough to not make it too hard. This one is not as common as the first. But it is part of an extremely famous book. And part of a famous movie rant.
+Now do the same for in2.txt and substitute again based on frequency. This one doesn't line up perfectly, but close enough to not make it too hard. This one is not as common as the first. But it is part of an extremely famous book. And part of a famous movie rant.
 
 
 ### Sources (example)
 
-- The Kite:
-  - https://www.kite.com/python/answers/how-to-replace-characters-in-a-string-in-python#:~:text=replace()%20to%20replace%20characters,character%20anywhere%20in%20the%20string.
-
-I used the sources to help me with Python syntax for replacing characters. 
+- 
 ```
