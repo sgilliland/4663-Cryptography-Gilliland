@@ -18,6 +18,4 @@ Now do the same for in2.txt and substitute again based on frequency. This one do
 
 
 ### Sources (example)
-
-- 
-```
+- I used and edited code for the frequency analysis from Dr. Griffin.
