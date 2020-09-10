@@ -30,11 +30,11 @@ biltong filet mignon. Shoulder chislic ground round pork burgdoggen hamburger.
 
 |   #   | File                       | Description                                                |
 | :---: | -------------------------- | ---------------------------------------------------------- |
-|   1   | [FirstDecryptionSteps.pdf](./FirstDecryptionSteps)     | PDF of 1st decryption process  |
-|   1   | [FirstDecryptionSteps.pdf](./FirstDecryptionSteps)     | PDF of 2nd decryption process  |
-|   1   | [FrequencyAnalysis.py](./FrequencyAnalysis)     | Program to analyze letter frequency   | 
-|   2   | [in1.txt](./in1)               | Test input file from problem statement                 |
-|   3   | [in2.txt](./in2)               | Larger test input from udebug                          |
+|   1   | [FirstDecryptionSteps.pdf](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/FirstDecryptionSteps.pdf)     | PDF of 1st decryption process  |
+|   2   | [SecondDecryptionSteps.pdf](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/SecondDecryptionSteps.pdf)     | PDF of 2nd decryption process  |
+|   3   | [FrequencyAnalysis.py](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/FrequencyAnalysis.py)     | Program to analyze letter frequency   | 
+|   4   | [in1.txt](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/in1.txt)               | Test input file from problem statement                 |
+|   5   | [in2.txt](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/in2.txt)               | Larger test input from udebug                          |
 
 
 ### Sources (example)
