@@ -7,7 +7,7 @@ I received two files that were encrypted using a "substitution" cipher. The geni
 
 It is not a shift cipher, so you cant brute force the shift value! So the only way to get these two messages vital to the safety of earth is to run a frequency analysis on them. Below is a typical frequency distribution for you to work with.
 
-#### Typical Frequency Distribution
+#### Typical Frequency Distribution Graph
 <a href="https://cs.msutexas.edu/~griffin/zcloud/zcloud-files/frequency_4663_2020.jpg"><img src="https://cs.msutexas.edu/~griffin/zcloud/zcloud-files/frequency_4663_2020.jpg" width="600"></a>
 
 ### First (easy)
@@ -15,6 +15,26 @@ Run a frequency analysis on the file in1.txt and substitute each letter based on
 
 ### Second (medium)
 Now do the same for in2.txt and substitute again based on frequency. This one doesn't line up perfectly, but close enough to not make it too hard. This one is not as common as the first. But it is part of an extremely famous book. And part of a famous movie rant.
+
+## 111734 - Hectic Pyranomax Syndicated Hexogram
+### Peggy Sue 
+### Description:
+
+Bacon ipsum dolor amet pork loin kielbasa pork, drumstick leberkas shankle strip steak fatback beef ribs ham hock.
+Pork short ribs doner andouille cupim pastrami picanha landjaeger pig. Salami swine capicola spare ribs boudin
+leberkas. Capicola ground round pork meatloaf, ham jowl swine prosciutto bacon alcatra pancetta burgdoggen pig
+spare ribs leberkas. Shankle fatback ground round, porchetta frankfurter cupim venison strip steak pig meatball
+biltong filet mignon. Shoulder chislic ground round pork burgdoggen hamburger.
+
+### Files
+
+|   #   | File                       | Description                                                |
+| :---: | -------------------------- | ---------------------------------------------------------- |
+|   1   | [FirstDecryptionSteps.pdf](./FirstDecryptionSteps)     | PDF of 1st decryption process  |
+|   1   | [FirstDecryptionSteps.pdf](./FirstDecryptionSteps)     | PDF of 2nd decryption process  |
+|   1   | [FrequencyAnalysis.py](./FrequencyAnalysis)     | Program to analyze letter frequency   | 
+|   2   | [in1.txt](./in1)               | Test input file from problem statement                 |
+|   3   | [in2.txt](./in2)               | Larger test input from udebug                          |
 
 
 ### Sources (example)
