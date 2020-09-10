@@ -25,8 +25,8 @@ Now do the same for in2.txt and substitute again based on frequency. This one do
 |   1   | [FirstDecryptionSteps.pdf](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/FirstDecryptionSteps.pdf)     | PDF of 1st decryption process  |
 |   2   | [SecondDecryptionSteps.pdf](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/SecondDecryptionSteps.pdf)     | PDF of 2nd decryption process  |
 |   3   | [FrequencyAnalysis.py](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/FrequencyAnalysis.py)     | Program to analyze letter frequency   | 
-|   4   | [in1.txt](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/in1.txt)               | Test input file from problem statement                 |
-|   5   | [in2.txt](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/in2.txt)               | Larger test input from udebug                          |
+|   4   | [in1.txt](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/in1.txt)               | First encryption input                 |
+|   5   | [in2.txt](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A03/in2.txt)               | Second encryption input                |
 
 
 ### Sources (example)
