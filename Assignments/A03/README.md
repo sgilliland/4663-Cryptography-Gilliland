@@ -1,8 +1,9 @@
 
 ## Assignment 3 - Frequency Analysis
+#### Name: Sarah Gilliland
 #### Due: Tuesday, September 8, 2020
 
-## General Problem
+### General Problem
 I received two files that were encrypted using a "substitution" cipher. The genius whom encrypted these, randomly shuffled a list of letters multiple times. The problem is, he never sent me the key! So, I cannot reverse the process. I need your help to decipher these messages.
 
 It is not a shift cipher, so you cant brute force the shift value! So the only way to get these two messages vital to the safety of earth is to run a frequency analysis on them. Below is a typical frequency distribution for you to work with.
@@ -16,15 +17,6 @@ Run a frequency analysis on the file in1.txt and substitute each letter based on
 ### Second (medium)
 Now do the same for in2.txt and substitute again based on frequency. This one doesn't line up perfectly, but close enough to not make it too hard. This one is not as common as the first. But it is part of an extremely famous book. And part of a famous movie rant.
 
-## 111734 - Hectic Pyranomax Syndicated Hexogram
-### Peggy Sue 
-### Description:
-
-Bacon ipsum dolor amet pork loin kielbasa pork, drumstick leberkas shankle strip steak fatback beef ribs ham hock.
-Pork short ribs doner andouille cupim pastrami picanha landjaeger pig. Salami swine capicola spare ribs boudin
-leberkas. Capicola ground round pork meatloaf, ham jowl swine prosciutto bacon alcatra pancetta burgdoggen pig
-spare ribs leberkas. Shankle fatback ground round, porchetta frankfurter cupim venison strip steak pig meatball
-biltong filet mignon. Shoulder chislic ground round pork burgdoggen hamburger.
 
 ### Files
 
