@@ -7,6 +7,8 @@
   If the operation is to "encrypt", the program encrypts a message from the plaintext file and displays the encrypted message in the cyphertext file. 
   If the operation is to "decrypt", the program decrypts an encrypted message from the cyphertext file and displays it in the plaintext file. 
   The program uses the ADFGX Cipher to encrypt and decrypt the messages.
+  
+  NOT DONE: so far, the program only encodes. It cannot decrypt yet.
 """
 
 import sys
