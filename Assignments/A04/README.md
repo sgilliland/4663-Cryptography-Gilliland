@@ -3,7 +3,7 @@
 #### Due: Monday, September 14, 2020
 
 ### General Problem
-Decode and encoded message using the ADFGX Algorithm.
+Decode and encode messages using the ADFGX Algorithm.
 
 ### Files
 
