@@ -3,7 +3,10 @@
   CMPS 4663 - Cryptography
   A04 - ADFGX Cipher
 
-  This program reads in keywords from .replit and does one of 2 things depending on the operation "encrypt" or "decrypt". If the operation is to "encrypt", the program encrypts a message from the plaintext file and displays the encrypted message in the cyphertext file. If the operation is to "decrypt", the program decrypts an encrypted message from the cyphertext file and displays it in the plaintext file. The program uses the ADFGX Cipher to encrypt and decrypt the messages.
+  This program reads in keywords from .replit and does one of 2 things depending on the operation "encrypt" or "decrypt". 
+  If the operation is to "encrypt", the program encrypts a message from the plaintext file and displays the encrypted message in the cyphertext file. 
+  If the operation is to "decrypt", the program decrypts an encrypted message from the cyphertext file and displays it in the plaintext file. 
+  The program uses the ADFGX Cipher to encrypt and decrypt the messages.
 """
 
 import sys
