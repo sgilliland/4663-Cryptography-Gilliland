@@ -1,0 +1,2 @@
+language = "python3"
+run = "python3 adfgx.py input=plaintext output=cyphertext op=decrypt key1=sunflower key2=honey"
