@@ -1,6 +1,6 @@
 ## Assignment 4 - ADFGX Implementation
 #### Name: Sarah Gilliland
-#### Due: Monday, September 14, 2020
+#### Due: Thursday, September 17, 2020
 
 ### General Problem
 Decode and encode messages using the ADFGX Algorithm.
