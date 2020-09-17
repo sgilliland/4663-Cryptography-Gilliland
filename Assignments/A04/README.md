@@ -9,7 +9,7 @@ Decode and encoded message using the ADFGX Algorithm.
 
 |   #   | File                       | Description                                                |
 | :---: | -------------------------- | ---------------------------------------------------------- |
-|   1   | [adfgx.py](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A04)     | Main program used for this assignment       |
+|   1   | [adfgx.py](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A04/adfgx.py)     | Main program used for this assignment       |
 |   2   | [File2](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A04)     | File description       |
 |   3   | [File3](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A04)     | File description       | 
 |   4   | [File4](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A04)     | File description       |
