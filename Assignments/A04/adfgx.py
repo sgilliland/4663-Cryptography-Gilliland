@@ -7,8 +7,6 @@
   If the operation is to "encrypt", the program encrypts a message from the plaintext file and displays the encrypted message in the cyphertext file. 
   If the operation is to "decrypt", the program decrypts an encrypted message from the cyphertext file and displays it in the plaintext file. 
   The program uses the ADFGX Cipher to encrypt and decrypt the messages.
-  
-  NOT DONE: so far, the program only encodes. It cannot decrypt yet.
 """
 
 import sys
@@ -59,10 +57,6 @@ def encrypt(**kwargs):
     # should test if file exists ...
     with open(infile) as f:
       text = f.read()
-    """
-    with open(outfile) as t:
-      t.write(codedMessage)
-    """
     
     text = text.lower()
     text = text.replace(' ','')
@@ -73,7 +67,7 @@ def encrypt(**kwargs):
     encrypt_message(codedMessage)
 
     
-    
+
 def get_message(text, key1):
     # init and input my first keyword
     #A = AdfgxLookup('sunflower')
@@ -107,15 +101,15 @@ def encrypt_message(message):
 
     # figure out the rows and how many short columns
     rows = math.ceil(float(message_length)/float(key2_length))
-    short_cols = key2_length - (message_length%key2_length)
 
     # dictionary for our new matrix
     matrix = {}
 
     # every letter is a key that points to a list
     for k in key2:
-        matrix[k] = []
+          matrix[k] = []
 
+    
     # add the message to the each list in a row-wise fashion
     i = 0
     for m in message:
@@ -126,6 +120,7 @@ def encrypt_message(message):
     print("")
 
     print_matrix(matrix,rows)
+
 
     # Alphabetize the matrix
     temp_matrix = sorted(matrix.items())
@@ -168,16 +163,118 @@ def print_message(matrix,key2word):
 def decrypt(**kwargs):
     """
     We have both keys and the cypherText, ctext.
-    1. Get the number of long columns
-    2. Load the letters into your array until you have numLongCols letters left
-    3. Then alphabatize your array, and add your remaining letters.
+    1. Get the number of long columns. They'll be the first indices of the alphabetized key2.
+    2. 
     4. Read your message, and then plug it in to the polybius table with the first key and acquire your decrypted plaintext
     """
-    ifile = open(infile, "w")
-    print("decrypted message to come...")
-    ifile.write("not there yet")
+    with open(outfile) as f:
+      cText = f.read()
+    
+    cText = cText.replace(' ','')
 
-  
+    ifile = open(infile, "w")
+    print("")
+    print("Cyphered Text is " + cText)
+    print("")
+    
+
+    key2_length = len(key2)             # length of key
+    cText_length = len(cText)           # message length 
+
+    rows = math.ceil(float(cText_length)/float(key2_length))
+
+    # create empty matrix
+    #matrix = {k: [] for k in sorted(list(key2))}
+
+    matrix = {}
+    key2List = sorted(list(key2))
+    for k in key2List:
+       matrix[k] = []
+
+    long_cols = cText_length % key2_length
+    # integer division, //, gives the number of chars in a column
+    col_length = cText_length // key2_length
+
+    long_cols_lookup = []
+    short_cols_lookup = []
+
+    for index, column in enumerate(key2):          
+      if index < long_cols:
+        long_cols_lookup.append(key2[index])
+      else:
+        short_cols_lookup.append(key2[index])
+    
+    tempKey2 = sorted(key2)
+   
+    long_cols_length = col_length + 1
+    
+    i = 0
+    for index, column in enumerate(tempKey2): 
+      if tempKey2[index] in long_cols_lookup:
+        for _ in range(long_cols_length):
+          matrix[column].append(cText[i])
+          i += 1
+      if tempKey2[index] in short_cols_lookup:
+        for _ in range(col_length):
+          matrix[column].append(cText[i])
+          i += 1
+
+    print_matrix(matrix, rows)
+    print("")
+
+    # Alphabetize the matrix
+    temp_matrix = {}
+    for k in key2:
+       temp_matrix[k] = matrix[k]
+
+    print_matrix(temp_matrix,rows)
+    print("")
+
+    message = ''
+    for r in range(rows):
+        for k in temp_matrix:
+            if r < len(temp_matrix[k]):
+                message = message + temp_matrix[k][r]
+
+    print("Message is " + message)
+    #cool thing by jeremy
+    #temp_matrix = { k: matrix[k] for k in key2 }
+    
+    # Now that you have the message, get the plain text by using each 2 characters as coordinates
+
+    pText = get_plaintext(message, key1)
+    print("Plain text is " + pText)
+    ifile.write(pText)
+
+
+
+def get_plaintext(text, key1):
+    B = AdfgxLookup(key1)
+
+    # build my lookup table 
+    lookup2 = B.build_polybius_lookup()
+    reverse_lookup = {value : key for (key, value) in lookup2.items()}
+    
+    B.sanity_check()
+
+    pText = ''
+    twoLetters = ""
+    i = 1
+    for c in text:
+      twoLetters = twoLetters + c
+      mod = i % 2
+      if mod == 0:
+        newLetter = reverse_lookup[twoLetters]
+        pText = (pText + newLetter)
+        twoLetters = ""
+      i = i + 1
+    
+    print("")
+    print(pText)
+
+    return pText
+    
+
 
 def usage(message=None):
     if message:
