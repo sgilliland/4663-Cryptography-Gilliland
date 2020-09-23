@@ -3,9 +3,9 @@
   CMPS 4663 - Cryptography
   A04 - ADFGX Cipher
 
-  This program reads in keywords from .replit and does one of 2 things depending on the operation "encrypt" or "decrypt". 
-  If the operation is to "encrypt", the program encrypts a message from the plaintext file and displays the encrypted message in the cyphertext file. 
-  If the operation is to "decrypt", the program decrypts an encrypted message from the cyphertext file and displays it in the plaintext file. 
+  This program reads in keywords from .replit and does one of 2 things depending on the operation "encrypt" or "decrypt".
+  If the operation is to "encrypt", the program encrypts a message from the plaintext file and displays the encrypted message in the cyphertext file.
+  If the operation is to "decrypt", the program decrypts an encrypted message from the cyphertext file and displays it in the plaintext file.
   The program uses the ADFGX Cipher to encrypt and decrypt the messages.
 """
 
@@ -31,10 +31,10 @@ def mykwargs(argv):
     return args,kargs
 
 
-
 def print_matrix(matrix,rows):
-    """ Print the matrix so we can visually confirm that our
-        columnar transposition is actually working
+    """ 
+    Print the matrix so we can visually confirm that our
+    columnar transposition is actually working
     """
     for k in matrix:
         print(k,end=' ')
@@ -52,37 +52,38 @@ def print_matrix(matrix,rows):
         print("")
 
 
-
 def encrypt(**kwargs):
-    # should test if file exists ...
+    """
+    Read from the plainText file and call get_message and encrypt_message to encrypt the plain text by the ADFGX Cipher
+    """
     with open(infile) as f:
       text = f.read()
     
     text = text.lower()
+    print("Plain text: " + text)
     text = text.replace(' ','')
-    
+
     codedMessage = get_message(text, key1)
     
-
     encrypt_message(codedMessage)
 
     
 
 def get_message(text, key1):
+    """
+    Use the createPolybius file to make a Polybius square and get the new message using key1
+    """
     # init and input my first keyword
-    #A = AdfgxLookup('sunflower')
     A = AdfgxLookup(key1)
 
     # build my lookup table 
     lookup = A.build_polybius_lookup()
-    # print out my adfgx lookup table
-    # print(lookup)
 
-    # print out the actual matrix
+    # print out the actual matrix to the screen
     A.sanity_check()
 
     message = ''
-    #for c in 'dawnarrives':
+    # create the message using the lookup table
     for c in text:
       message = (message + ' ' + lookup[c] + ' ')
     print("")
@@ -96,20 +97,22 @@ def get_message(text, key1):
 
 
 def encrypt_message(message):
+    """
+    Receive the message from get_message and fill into a matrix with the indices of the letters of key2. 
+    Then alphabetize key2 to transpose the columns and mix up the matrix. 
+    The encrypted message is the characters of the matrix displayed one by one.
+    """
     key2_length = len(key2)             # length of key
     message_length = len(message)       # message length 
-
-    # figure out the rows and how many short columns
     rows = math.ceil(float(message_length)/float(key2_length))
 
-    # dictionary for our new matrix
+    # dictionary for the new matrix
     matrix = {}
 
     # every letter is a key that points to a list
     for k in key2:
           matrix[k] = []
 
-    
     # add the message to the each list in a row-wise fashion
     i = 0
     for m in message:
@@ -118,9 +121,7 @@ def encrypt_message(message):
         i = i % len(key2)
 
     print("")
-
     print_matrix(matrix,rows)
-
 
     # Alphabetize the matrix
     temp_matrix = sorted(matrix.items())
@@ -131,7 +132,7 @@ def encrypt_message(message):
     for item in temp_matrix:
         sorted_matrix[item[0]] = item[1]
 
-    # Just checking what we have
+    # Check what we have
     print_matrix(sorted_matrix,rows)
     print("")
 
@@ -141,8 +142,9 @@ def encrypt_message(message):
 
 
 def print_message(matrix,key2word):
-    # Prints the message both to the screen and the output file
-    # open the output file
+    """
+    Open the output file and print the message both to the screen and the output file
+    """
     ofile = open(outfile, "w")
     
     i = 1
@@ -162,10 +164,10 @@ def print_message(matrix,key2word):
 
 def decrypt(**kwargs):
     """
-    We have both keys and the cypherText, ctext.
-    1. Get the number of long columns. They'll be the first indices of the alphabetized key2.
-    2. 
-    4. Read your message, and then plug it in to the polybius table with the first key and acquire your decrypted plaintext
+    We have both keys and the cypherText.
+    Get the number of long columns so that the matrix can be filled correctly. 
+    Fill message into the alphabetized matrix, then unalphabetize.
+    Read your message from the amtrix, and then plug it in to the reversed polybius lookup table with the first key and acquire your decrypted plaintext.
     """
     with open(outfile) as f:
       cText = f.read()
@@ -180,16 +182,10 @@ def decrypt(**kwargs):
 
     key2_length = len(key2)             # length of key
     cText_length = len(cText)           # message length 
-
     rows = math.ceil(float(cText_length)/float(key2_length))
 
     # create empty matrix
-    #matrix = {k: [] for k in sorted(list(key2))}
-
-    matrix = {}
-    key2List = sorted(list(key2))
-    for k in key2List:
-       matrix[k] = []
+    matrix = {k: [] for k in sorted(list(key2))}
 
     long_cols = cText_length % key2_length
     # integer division, //, gives the number of chars in a column
@@ -223,9 +219,7 @@ def decrypt(**kwargs):
     print("")
 
     # Alphabetize the matrix
-    temp_matrix = {}
-    for k in key2:
-       temp_matrix[k] = matrix[k]
+    temp_matrix = { k: matrix[k] for k in key2 }
 
     print_matrix(temp_matrix,rows)
     print("")
@@ -237,8 +231,6 @@ def decrypt(**kwargs):
                 message = message + temp_matrix[k][r]
 
     print("Message is " + message)
-    #cool thing by jeremy
-    #temp_matrix = { k: matrix[k] for k in key2 }
     
     # Now that you have the message, get the plain text by using each 2 characters as coordinates
 
@@ -249,9 +241,13 @@ def decrypt(**kwargs):
 
 
 def get_plaintext(text, key1):
+    """
+    Reverse the polybius lookup table and use every 2 letters of the message to find the corresponding plain text character. 
+    Concatenate these to get the decrypted plain text.
+    """
     B = AdfgxLookup(key1)
 
-    # build my lookup table 
+    # build my lookup table and reverse it
     lookup2 = B.build_polybius_lookup()
     reverse_lookup = {value : key for (key, value) in lookup2.items()}
     
@@ -260,9 +256,11 @@ def get_plaintext(text, key1):
     pText = ''
     twoLetters = ""
     i = 1
+    # use every 2 letters of the message in the lookup table
     for c in text:
       twoLetters = twoLetters + c
       mod = i % 2
+      # if we have read two more letters from the message
       if mod == 0:
         newLetter = reverse_lookup[twoLetters]
         pText = (pText + newLetter)
@@ -271,12 +269,15 @@ def get_plaintext(text, key1):
     
     print("")
     print(pText)
-
+    # return the plain text
     return pText
     
 
 
 def usage(message=None):
+    """
+    Display descriptive error messages if the keywords from .replit are incorrect
+    """
     if message:
         print(message)
     name = os.path.basename(__file__)
