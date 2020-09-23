@@ -57,26 +57,13 @@ class AdfgxLookup:
 
         # key exists ... continue
         self.keylen = len(self.key)
+        
+        # replace any j with i
+        self.key = self.key.replace('j','i')
 
         # prime polybius_string variable with key
         self.polybius = self.key
 
-        """
-        if j is already in the key, then i is not need. SO,
-        let flag = true if j in key, and flag = false if not
-        for l in self.alphabet:
-            if (!flag)
-              if l == 'j':        # no j needed!
-                continue
-            if not l in self.key:    # if letter not in key, add it
-                self.polybius += l
-            else
-              if l == 'i':        # no i needed!
-                continue
-            if not l in self.key:    # if letter not in key, add it
-                self.polybius += l
-        return self.polybius
-        """
         for l in self.alphabet:
             if l == 'j':        # no j needed!
                 continue
@@ -116,7 +103,6 @@ class AdfgxLookup:
                 self.lookup[self.polybius[i]] = self.adfgx[row]+self.adfgx[col]
 
         return self.lookup
-
 
     def sanity_check(self):
         """ This method lets you look at an actual "matrix" that you      built using a keyword. 
