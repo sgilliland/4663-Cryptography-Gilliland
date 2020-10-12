@@ -12,10 +12,9 @@ If the number is prime, say so in the output.
 |   #   | File                       | Description                                                |
 | :---: | -------------------------- | ---------------------------------------------------------- |
 |   1   | [get_factors.py](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A06/get_factors.py)    | Main program used for this assignment       |
-|   2   | [eratosthenes.py](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A06/eratosthenes.py)     |   Program to find primes    |
-|   3   | [numbers](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A06/numbers)     | Input file to read in the number       | 
-|   4   | [output](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A06/output)     | Output file to the factors if the number is not prime      |
+|   2   | [numbers](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A06/numbers)     | Input file containing numbers to process       | 
+|   3   | [output](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A06/output)     | Output file containing the output displayed on the screen  |
 
 
 ### Sources (example)
-- I used the following website for...
+- I used no outside resources for my program.
