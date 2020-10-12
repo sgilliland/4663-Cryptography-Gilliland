@@ -1,1 +1,11 @@
-# formatted output will go here
+# example of output shown on the screen when program runs
+Name: Sarah Gilliland
+Number 1 :  231697363  - Factors: [419, 607, 911]
+Number 2 :  13  - Prime!
+Number 3 :  78  - Factors: [2, 3, 13]
+Number 4 :  133  - Factors: [7, 19]
+Number 5 :  19  - Prime!
+Number 6 :  9  - Factors: [3]
+Number 7 :  0  - Factors: 0
+Number 8 :  709  - Prime!
+Number 9 :  136429  - Prime!
