@@ -16,6 +16,6 @@ Write a python program that will discover the size of that dictionary word (keyl
 |   4   | [input2](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/input2)     | Input file used for testing code       |
 
 
-### Sources (example)
+### Sources
 - I used the following website to find the encrypted message: [clickHere](https://stackoverflow.com/questions/8870261/how-to-split-text-without-spaces-into-list-of-words)
 - I used the following program by drewp41 on github for my implementation of incidence of coincidence: [clickHere](https://github.com/drewp41/Vigenere-Cipher-Breaker/blob/master/Vigenere_cipher.py)
