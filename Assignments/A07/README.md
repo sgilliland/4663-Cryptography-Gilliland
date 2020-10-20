@@ -47,7 +47,12 @@ The AKS test evaluates the equality by making complexity dependent on the size o
 ![TheoremPt2](https://www.geeksforgeeks.org/wp-content/ql-cache/quicklatex.com-8073198e20b3072fcccea50221cd428a_l3.svg) 
 
 which can be expressed in simpler terms as 
+
 ![TheoremPt3](https://www.geeksforgeeks.org/wp-content/ql-cache/quicklatex.com-80cb6414a1344ccdce4e4b37042dfbe8_l3.svg) 
 
 for some polynomials f and g.
+This congruence can be checked in polynomial time when r is polynomial to the digits of n.
 
+Here is some C++ code to check if a number, n, is prime. This program demonstrates concept behind AKS algorithm and doesn't implement the actual algorithm.
+(This works only till n = 64) 
+![CPPCode](/Images/AKScode.png)
