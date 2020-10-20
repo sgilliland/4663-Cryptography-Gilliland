@@ -53,6 +53,6 @@ which can be expressed in simpler terms as
 for some polynomials f and g.
 This congruence can be checked in polynomial time when r is polynomial to the digits of n.
 
-Here is some C++ code to check if a number, n, is prime. This program demonstrates concept behind AKS algorithm and doesn't implement the actual algorithm.
+Here is some python3 code to check if a number, n, is prime. This program demonstrates concept behind AKS algorithm and doesn't implement the actual algorithm.
 (This works only till n = 64) 
-![CPPCode](/Images/AKScode.png)
+![CPPCode](/Images/AKSpython.png)
