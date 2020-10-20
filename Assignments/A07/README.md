@@ -3,7 +3,14 @@
 #### Due: Tuesday, October 20, 2020
 
 ## Certification
-### Certification test ...
+### Wilson's Theorem
+Wilson's theorem states that a natural number n > 1 is a prime number if and only if (p-1)! ≡ -1 (mod p).
+This theorem is a certification of a prime number.
+
+Pseudo code for the algorithm is shown below.
+
+![Pseudocode](/Images/Wilsons.png)
+
 __Sources__
 
 ## Compositeness
