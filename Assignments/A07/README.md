@@ -20,9 +20,10 @@ In 1878, E. Lucas proposed two tests for the primality of the Mersenne number, N
 However, neither was accompanied by a complete proof. In 1930, and as part of his Ph.D. thesis, 
 D. H. Lehmer stated and proved a necessary and sufficient condition for N to be prime. 
 This result has become known as the Lucas–Lehmer test. It is usually stated as in Theorem 1.
-(Insert image for Theorm 1 here)
+![Theorem](/Images/2020-10-20.png)
 The pseudocode of the Lucas-Lehmer Test is shown below.
- <img src="Images/2020-10-20 (1).png" width="300"> 
+![Pseudocode](/Images/2020-10-20 (1).png)
+ <img src="Images/2020-10-20(1).png" width="700"> 
 __Sources__
 https://en.wikipedia.org/wiki/Lucas%E2%80%93Lehmer_primality_test 
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.3573&rep=rep1&type=pdf 
