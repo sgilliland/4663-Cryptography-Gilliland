@@ -34,4 +34,20 @@ https://en.wikipedia.org/wiki/Lucas%E2%80%93Lehmer_primality_test
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.3573&rep=rep1&type=pdf 
 
 
-#### Another Test
+#### AKS Primality Test
+The AKS (Agrawal–Kayal–Saxena) Primality Test is a deterministic algorithm that can be used to verify the primality of any general number given. 
+The AKS Primality Test was created and published by Manindra Agrawal, Neeraj Kayal, and Nitin Saxena in 2002.
+The AKS primality test is based upon the following theorem: An integer n greater than 2 is prime if and only if the polynomial congruence relation 
+
+![TheoremPt1](https://www.geeksforgeeks.org/wp-content/ql-cache/quicklatex.com-2a71ba1e4c187329dbf2eb5ed2baf765_l3.svg) 
+
+holds for some a coprime to n. Here x is just a formal symbol. 
+The AKS test evaluates the equality by making complexity dependent on the size of r . This is expressed as
+
+![TheoremPt2](https://www.geeksforgeeks.org/wp-content/ql-cache/quicklatex.com-8073198e20b3072fcccea50221cd428a_l3.svg) 
+
+which can be expressed in simpler terms as 
+![TheoremPt3](https://www.geeksforgeeks.org/wp-content/ql-cache/quicklatex.com-80cb6414a1344ccdce4e4b37042dfbe8_l3.svg) 
+
+for some polynomials f and g.
+
