@@ -56,3 +56,10 @@ This congruence can be checked in polynomial time when r is polynomial to the di
 Here is some python3 code to check if a number, n, is prime. This program demonstrates concept behind AKS algorithm and doesn't implement the actual algorithm.
 (This works only till n = 64) 
 ![CPPCode](/Images/AKSpython.png)
+
+__Sources__
+
+https://www.geeksforgeeks.org/aks-primality-test/?ref=rp 
+
+https://en.wikipedia.org/wiki/AKS_primality_test
+
