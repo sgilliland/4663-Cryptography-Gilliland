@@ -2,16 +2,16 @@
 #### Name: Sarah Gilliland
 #### Due: Tuesday, October 20, 2020
 
-### Certification
+## Certification
 #### Certification test ...
 __Sources__
 
-### Compositeness
+## Compositeness
 #### Compositeness Test ...
 __Sources__
 
 
-### Deterministic
+## Deterministic
 #### Lucas-Lehmer Test
 The Lucas-Lehmer Test is a deterministic algorithm and is the primality test used by the
 [Great Internet Mersenne Prime Search](https://en.wikipedia.org/wiki/Great_Internet_Mersenne_Prime_Search) (GIMPS) to locate large primes. 
