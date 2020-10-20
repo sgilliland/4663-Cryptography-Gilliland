@@ -3,16 +3,16 @@
 #### Due: Tuesday, October 20, 2020
 
 ## Certification
-#### Certification test ...
+### Certification test ...
 __Sources__
 
 ## Compositeness
-#### Compositeness Test ...
+### Compositeness Test ...
 __Sources__
 
 
 ## Deterministic
-#### Lucas-Lehmer Test
+### Lucas-Lehmer Test
 The Lucas-Lehmer Test is a deterministic algorithm and is the primality test used by the
 [Great Internet Mersenne Prime Search](https://en.wikipedia.org/wiki/Great_Internet_Mersenne_Prime_Search) (GIMPS) to locate large primes. 
 This search has been successful in locating many of the largest primes known to date.
@@ -34,7 +34,8 @@ https://en.wikipedia.org/wiki/Lucas%E2%80%93Lehmer_primality_test
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.3573&rep=rep1&type=pdf 
 
 
-#### AKS Primality Test
+
+### AKS Primality Test
 The AKS (Agrawal–Kayal–Saxena) Primality Test is a deterministic algorithm that can be used to verify the primality of any general number given. 
 The AKS Primality Test was created and published by Manindra Agrawal, Neeraj Kayal, and Nitin Saxena in 2002.
 The AKS primality test is based upon the following theorem: An integer n greater than 2 is prime if and only if the polynomial congruence relation 
