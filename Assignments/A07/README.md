@@ -3,12 +3,12 @@
 #### Due: Tuesday, October 20, 2020
 
 ### Certification
-Certification test ...
-_Sources_
+#### Certification test ...
+__Sources__
 
 ### Compositeness
-Compositeness Test ...
-_Sources_
+#### Compositeness Test ...
+__Sources__
 
 
 ### Deterministic
@@ -22,12 +22,9 @@ D. H. Lehmer stated and proved a necessary and sufficient condition for N to be 
 This result has become known as the Lucas–Lehmer test. It is usually stated as in Theorem 1.
 ![Theorem](/Images/2020-10-20.png)
 The pseudocode of the Lucas-Lehmer Test is shown below.
-![Pseudocode](/Images/2020-10-20 (1).png)
- <img src="Images/2020-10-20(1).png" width="700"> 
+![Pseudocode](/Images/PseudoCodeLLT.png)
 __Sources__
 https://en.wikipedia.org/wiki/Lucas%E2%80%93Lehmer_primality_test 
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.3573&rep=rep1&type=pdf 
 
-#### Sources
-https://en.wikipedia.org/wiki/Lucas%E2%80%93Lehmer_primality_test 
-http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.3573&rep=rep1&type=pdf 
+#### Another Test
