@@ -2,6 +2,8 @@
 #### Name: Sarah Gilliland
 #### Due: Tuesday, October 20, 2020
 
+
+
 ## Certification
 ### Wilson's Theorem
 Wilson's theorem states that a natural number n > 1 is a prime number if and only if (p-1)! ≡ -1 (mod p).
@@ -12,8 +14,13 @@ Pseudo code for the algorithm is shown below.
 ![Pseudocode](/Images/Wilsons.png)
 
 __Sources__
+https://primes.utm.edu/notes/proofs/Wilsons.html 
+https://en.wikipedia.org/wiki/Primality_test#Fast_deterministic_tests 
+
+
 
 ## Compositeness
+
 ### Solovay-Strassen Test
 The Solovay–Strassen primality test is a probabilistic test to determine if a number is composite or probably prime. Therefore, it can be classified as a compositeness test.
 
@@ -60,7 +67,9 @@ https://archive.lib.msu.edu/crcmath/math/math/m/m237.htm
 https://www.geeksforgeeks.org/primality-test-set-3-miller-rabin/
 
 
+
 ## Deterministic
+
 ### Lucas-Lehmer Test
 The Lucas-Lehmer Test is a deterministic algorithm and is the primality test used by the
 [Great Internet Mersenne Prime Search](https://en.wikipedia.org/wiki/Great_Internet_Mersenne_Prime_Search) (GIMPS) to locate large primes. 
@@ -81,7 +90,6 @@ __Sources__
 https://en.wikipedia.org/wiki/Lucas%E2%80%93Lehmer_primality_test 
 
 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.3573&rep=rep1&type=pdf 
-
 
 
 ### AKS Primality Test
