@@ -39,8 +39,26 @@ The pseudocode for calculating the jacobian and for the Solovay-Strassen algorit
 
 ![Pseudocode](/Images/SolovayStrassen.png)
 
-__Sources__
+__Source__
+
 https://www.geeksforgeeks.org/primality-test-set-4-solovay-strassen/
+
+
+### Miller-Rabin's Primality Test
+Miller-Rabin Primality Test can be considered a Composite test becuase if a number fails this test, it is Composite. If the number passes, it may be a Prime, or it may be a strong pseudoprime. If a number is an odd, positive, composite number, then it passes Miller's test for at most (n-1)/4 bases with 1 <= a <= -1.
+
+Miller showed that any composite number, n, has a Witness less than 70(\ln n)^2 if the Riemann Hypothesis is true.
+
+Pseudo code for the algorithm is shown below.
+
+![Pseudocode](/Images/MillerRabin.png)
+
+__Sources__
+
+https://archive.lib.msu.edu/crcmath/math/math/m/m237.htm
+
+https://www.geeksforgeeks.org/primality-test-set-3-miller-rabin/
+
 
 ## Deterministic
 ### Lucas-Lehmer Test
