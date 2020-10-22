@@ -1,6 +1,6 @@
 ## Assignment 7 - Primality Tests
 #### Name: Sarah Gilliland
-#### Due: Tuesday, October 20, 2020
+#### Due: Thursday, October 22, 2020
 
 
 
