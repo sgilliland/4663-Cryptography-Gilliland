@@ -30,7 +30,7 @@ We select a number n to test for its primality and a random number a which lies 
 The Jacobian of n is a generalization of Legendre Symbol, where p is replaced by n where n is
 n = p1k1 * .. * pnkn
 , then Jacobian symbol is defined as: 
-(a/n) = ((a/p1)k1) * ((a/p2)k2) *.....* ((a/pn)kn)
+(a/n) = ((a/p1)^k1) * ((a/p2)^k2) *.....* ((a/pn)^kn)
 
 Using fast algorithms for modular exponentiation, the running time of this algorithm is O(k* log^3 * n), where k is the number of different values of a test.
 
