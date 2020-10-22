@@ -21,9 +21,11 @@ The algorithm can be summarized as this:
 
 We select a number n to test for its primality and a random number a which lies in the range of [2, n-1] and compute its Jacobian (a/n). If n is a prime number, then the Jacobian will be equal to the Legendre and it will satisfy condition (i) given by Euler. If n does not satisfy the given condition then n is composite. For clarification, the Legendre Symbol is defined for a pair of integers a and p such that p is prime. It is denoted by (a/p) and calculated as: 
 
-      = 0    if a%p = 0
+(a/p) = 0    if a%p = 0
+      
 (a/p) = 1    if there exists an integer k such that k2 = a(mod p)
-      = -1   otherwise.
+
+(a/p) = -1   otherwise.
 
 The Jacobian of n is a generalization of Legendre Symbol, where p is replaced by n where n is
 n = p1k1 * .. * pnkn
