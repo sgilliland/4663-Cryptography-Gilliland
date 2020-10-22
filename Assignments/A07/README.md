@@ -14,9 +14,20 @@ Pseudo code for the algorithm is shown below.
 __Sources__
 
 ## Compositeness
-### Compositeness Test ...
-__Sources__
+### Solovay-Strassen Test
+The Solovay–Strassen primality test is a probabilistic test to determine if a number is composite or probably prime. Therefore, it can be classified as a compositeness test.
 
+The algorithm can be summarized as this: we select a number n to test for its primality and a random number a which lies in the range of [2, n-1] and compute its Jacobian (a/n), if n is a prime number then the Jacobian will be equal to the Legendre and it will satisfy condition (i) given by Euler. If n does not satisfy the given condition then n is composite. For clarrification, a jacobian can be defined as (a/n) = ((a/p1)k1) * ((a/p2)k2) *.....* ((a/pn)kn).
+
+Using fast algorithms for modular exponentiation, the running time of this algorithm is O(k* log^3 * n), where k is the number of different values of a test.
+
+The pseudocode for calculating the jacobian and for the Solovay-Strassen algorithm is shown below.
+
+
+![Pseudocode](/Images/SolovayStrassen.png)
+
+__Sources__
+https://www.geeksforgeeks.org/primality-test-set-4-solovay-strassen/
 
 ## Deterministic
 ### Lucas-Lehmer Test
