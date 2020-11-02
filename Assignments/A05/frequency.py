@@ -1,3 +1,4 @@
+# sorts an alphabet by the frequency of letters in a given message
 alphabet = [chr(x+97) for x in range(26)]
 
 class Frequency():
