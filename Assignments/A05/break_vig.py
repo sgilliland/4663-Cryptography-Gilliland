@@ -121,13 +121,11 @@ def get_key_length(ciphertext):
 # Function to get the key
 def get_key(keylength, attempt,words):
     '''
-    Get the key using bayes classifier since you have the key length.
+    Search the dictionary for all words of length keylength.
+    Put into an array with attempt as the index of the key you return.
+    Return one by one potential keys
     '''
-    # check the dictionary for all words of length keylength
-    # put into an array with attempt as the index of the key you return
-    # return one by one potential keys
-    
-    #key = "fortification"
+    #key = "fortification" for input1
 
     for i in range(len(words)):
         words[i] = words[i].strip()
@@ -194,6 +192,8 @@ def check_english(message, words):
           return 0
     return 1
     '''
+    # Tried to only have this and it also broke my program.
+
     word = ""
     English = ""
     for x in message:
