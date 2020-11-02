@@ -18,6 +18,7 @@ Write a python program that will discover the size of that dictionary word (keyl
 |   6   | [output1](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/output1)     | Output file to display the keylength, keyword, and plain text       |
 |   7   | [input2](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/input2)     | Input file used for testing code       |
 |   8   | [output2](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/output2)     | Output file used for testing code       |
+|   9   | [.replit](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/.replit)     | File containing the keywords for the program       |
 
 
 ### Sources
