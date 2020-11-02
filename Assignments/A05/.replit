@@ -1,0 +1,2 @@
+language = "python3"
+run = "python3 break_vig.py input=input1 output=output1"
