@@ -16,9 +16,7 @@ Write a python program that will discover the size of that dictionary word (keyl
 |   4   | [words-by-frequency.txt](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/words-by-frequency.txt)     | List of 125549 words in the English Dictionary sorted by frequency    |
 |   5   | [input1](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/input1)     | Input file to read in the encrypted text       |
 |   6   | [output1](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/output1)     | Output file to display the keylength, keyword, and plain text       |
-|   7   | [input2](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/input2)     | Input file used for testing code       |
-|   8   | [output2](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/output2)     | Output file used for testing code       |
-|   9   | [.replit](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/.replit)     | File containing the keywords for the program       |
+|   7   | [.replit](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05/.replit)     | File containing the keywords for the program       |
 
 
 ### Sources
