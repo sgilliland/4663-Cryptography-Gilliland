@@ -3,23 +3,20 @@ Sarah Gilliland
 Program 5 - Vigenere
 CMPS 4662 - Cryptography
 This program reads in a message which has been encrypted using the vigenere cipher. 
-The program uses the Incidence of Coincidence to find the key used to encrypt the message, and then uses the key to find the original message. 
-The program also uses the langdetect library in python to decide if the message is an english sentence.
-NOTE: the program finds a potential original message and asks the user if it makes sense, or is a bunch of jumbled nonsense
+The program uses the Incidence of Coincidence to find the key used to encrypt the message, 
+and then uses the key to find the original message. 
 '''
 import sys
 import os
 from frequency import Frequency
 from math import log
-from langdetect import detect
-from langdetect import detect_langs
-from langdetect import DetectorFactory
 
 # Build a cost dictionary, assuming Zipf's law
 # cost = -math.log(probability)
 freqWords = open("words-by-frequency.txt").read().split()
 wordcost = dict((k, log((i+1)*log(len(freqWords)))) for i,k in enumerate(freqWords))
 maxword = max(len(x) for x in freqWords)
+
 
 def mykwargs(argv):
     '''
@@ -37,6 +34,7 @@ def mykwargs(argv):
             args.append(arg)
     return args,kargs
 
+
 def usage(message=None):
     '''
     Display descriptive error messages if the keywords from .replit are incorrect
@@ -48,6 +46,7 @@ def usage(message=None):
     print(f"Usage: python {name} [input=string filename] [output=string filename]")
     print(f"Example:\n\t python {name} input=in1 output=out1 \n")
     sys.exit()
+
 
 def read(**kwargs):
     '''
@@ -118,7 +117,7 @@ def get_key_length(ciphertext):
     else:
       return best_guess   
 
-# Function to get the key
+
 def get_key(keylength, attempt,words):
     '''
     Search the dictionary for all words of length keylength.
@@ -140,84 +139,22 @@ def get_key(keylength, attempt,words):
     key = rightLength[attempt]
     return key
 
-# Function to find the decrypted message by brute force
+
 def check_english(message, words):
     '''
-    use langdetect to see if the plaintext received from the potential key is a valid, english statement which could be the encrypted message. Returns true if the function needs a new key, returns false if the message is valid.
-    information on langdetect: https://pypi.org/project/langdetect/
-
-    checking through the word list again for every message broke my code, but langdetect is not accurate enough. So, I narrow down to  if the message passes langdetect, and then check through the word list to see if it is a valid sentence.
+    Check to see if the plaintext received from the potential key is a valid, english statement which could be the encrypted message. Return the probability ratio of likliness for English.
     '''
-    DetectorFactory.seed = 0
-    
-    g = detect(message)
-    if (g == "en"):
-      # check to see if it is a high enough probability of english
-      nums = []
-      top_language = str(detect_langs(message)[0])
-      for x in top_language:
-        # getting the decimal of probability for english
-        if x.isnumeric():
-          nums.append(x)
+    tokens = message.split()
+    score = 0
+    for tok in tokens:
+        if tok.upper() in words:
+            score += 1
 
-      if nums[1] == '9' and nums[2] == '9' and nums[3] == '9' and nums[4] == '9' and nums[5] == '9' and int(nums[6]) >=7:
-        # we know that the probability is >= 0.999997
-        # now check to see if the words are in the dictionary
-        # except that this piece of code here breaks my program
-        '''
-        word = ""
-        English = ""
-        for m in message:
-          if m != ' ':
-            word += m
-          else:
-            if word in words:
-              word += ' '
-              English += word
-              word = ""
-            else:
-              return 1
-        #English += word
-        
-        if English == message:
+    return score / len(tokens)
 
-          print("Does the plaintext " + message + " make sense? Y / N")
-          z = input()
-          if z == 'Y' or z == 'y':
-            return 0
-        '''
-        print("Does the plaintext " + message + " make sense? Y / N")
-        z = input()
-        if z == 'Y' or z == 'y':
-          return 0
-    return 1
-    '''
-    # Tried to only have this and it also broke my program.
 
-    word = ""
-    English = ""
-    for x in message:
-      if x != ' ':
-        word += x
-      else:
-        if word in words:
-          word += ' '
-          English += word
-          word = ""
-    English += word
-
-    # check to see if the message is english
-    # if message is english
-    if English == "defend the east wall of the castle":
-      return 0
-    # message is not english
-    else:
-      return 1
-    '''
-    
-
-# Function to decrypt and return the original message
-def decrypt(ciphertext,key,plaintext):
+def decrypt(ciphertext, key, plaintext):
+    # Decrypt using the key and return the plaintext
     plaintext = ""
     ciphertext = ciphertext.lower()
     key = key.lower()
@@ -239,7 +176,6 @@ def infer_spaces(s):
     of spaces in a string without spaces.
     https://controlc.com/c1666a6b
     """
-
     # Find the best match for the i first characters, assuming cost hasbeen built for the i-1 first characters.
     # Returns a pair (match_cost, match_length).
     def best_match(i):
@@ -263,9 +199,10 @@ def infer_spaces(s):
 
     return " ".join(reversed(out))
 
+
 if __name__=='__main__':
 
-    required_params = 2 # adjust accordingly
+    required_params = 2
 
     # get processed command line arguments 
     _,params = mykwargs(sys.argv[1:])
@@ -282,6 +219,10 @@ if __name__=='__main__':
     
     with open("words","r") as f:
       words = f.readlines()
+    
+    for i in range(len(words)):
+        words[i] = words[i].strip();
+
     #read ciphertext from file
     ciphertext = read()
     #strip ciphertext of its spaces
@@ -295,14 +236,14 @@ if __name__=='__main__':
     
     while (cycle == 1):
       attempt = attempt + 1
-      # get a different key
+      # get a different key, decrypt, and check if it's english
       key = get_key(keyLength, attempt, words)
       plaintext = decrypt(ciphertext, key, plaintext)
       plaintext = infer_spaces(plaintext)
+      ratio = check_english(plaintext,words)
 
       # if you find the correct message, break out of the cycle
-      cycle = check_english(plaintext, words)
-
-
-    #plaintext = infer_spaces(plaintext)
+      if (ratio >= 0.8):
+        cycle = 0
+      
     print("The plaintext is " + plaintext)
