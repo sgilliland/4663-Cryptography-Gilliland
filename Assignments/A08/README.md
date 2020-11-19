@@ -17,7 +17,7 @@ the project description from Dr. Griffin, which includes an illustration of how 
 
 |   #   | File                       | Description                                                |
 | :---: | -------------------------- | ---------------------------------------------------------- |
-|   1   | [4663_Encryption_Layer_Project.pptx](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A08/4663_Encryption_Layer_Project.pptx)    | Intro to project   |
+|   1   | [4663_Encryption_Layer_Project.pptx](https://github.com/rugbyprof/4663-Cryptography/blob/master/Assignments/A08/4663_Encryption_Layer_Project.pptx)    | Intro to project   |
 |   2   | [avg_english_freq.json](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A08/avg_english_freq.json)     | Data file for example route      | 
 |   3   | [client.py](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A08/client.py)     | Sends and receives requests from server.py  |
 |   4   | [server.py](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A08/server.py)     |  Handles requests from client.py as well as other clients. |
