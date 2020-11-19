@@ -8,4 +8,4 @@
 |   5   | [A05](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A05) |   Vigenere Cracking   |
 |   6   | [A06](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A06) |   Factoring Primes   |
 |   7   | [A07](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A07) |   Primality Tests   |
-
+|   8   | [A08](https://github.com/sgilliland/4663-Cryptography-Gilliland/blob/master/Assignments/A08) |   Public Key Encryption   |
