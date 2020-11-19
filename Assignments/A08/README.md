@@ -3,7 +3,7 @@
 #### Due: Tuesday, November 10, 2020
 
 ### General Problem
-This project will use an existing python library called cryptography (appropriately named) to use public key encryption 
+This project will use an existing python library called [cryptography](https://cryptography.io/en/latest/index.html) (appropriately named) to use public key encryption 
 to encrypt and decrypt messages sent between two entities.  We will use a library called Flask to allow two scripts
 to "talk" or communicate over a network (NOT on the same computer). 
 A Flask server runs and "listens" or monitors a "port" on a computer. When requests are directed to that port either from
