@@ -1,3 +1,8 @@
+'''
+Sarah Gilliland
+This crypto_class implements the RSA encryption algorithm.
+This code was provided by Dr. Griffin.
+'''
 #pip install cryptography
 import cryptography
 # Used to Generate Keys
@@ -16,8 +21,8 @@ class Crypto:
         self.private_key = None
         self.public_key = None
         self.file_prefix = 'key'
-        self.private_key_file = "key.private.pem"
-        self.public_key_file = "key.public.pem"
+        self.private_key_file = "my_private_key.txt"
+        self.public_key_file = "my_public_key.txt"
 
     def generate_keys(self,exp=65537,ksize=2048):
         """
@@ -25,13 +30,32 @@ class Crypto:
                         one of the small Fermat primes 3, 5, 17, 257 or 65537.
         key_size (int) – The length in bits of the modulus. Should be at least 2048.
         """
+        self.private_key = None
+        self.public_key = None
+        
         self.private_key = rsa.generate_private_key(
             public_exponent=exp,
             key_size=ksize
             # backend=default_backend()
         )
         self.public_key = self.private_key.public_key()
-        return {"private_key":self.private_key,"public_key":self.public_key}
+        return (self.private_key,self.public_key)
+        
+
+    def get_storable_keys(self):
+        # Storing Private Keys
+        private_pem = self.private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption()
+        )
+    
+        # Storing Public Key
+        public_pem = self.public_key.public_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PublicFormat.SubjectPublicKeyInfo
+        )
+        return (public_pem,private_pem)
 
     def store_keys(self):
         # Storing  Private Keys
@@ -51,19 +75,21 @@ class Crypto:
         with open(self.public_key_file, 'wb') as f:
             f.write(pem)
 
-    def load_keys(self):
+    def load_keys(self,pub_key=None,priv_file=None):
         # Reading the Private Key
-        with open(self.private_key_file, "rb") as key_file:
-            self.private_key = serialization.load_pem_private_key(
-                key_file.read(),
-                password=None
-                # backend=default_backend()
-            )
+        if priv_file:
+            with open(priv_file, "rb") as f:
+                self.private_key = serialization.load_pem_private_key(
+                    f.read(),
+                    password=None
+                    # backend=default_backend()
+                )
 
         # Reading the Public Key
-        with open(self.public_key_file, "rb") as key_file:
+        if pub_key:
+            pub_key = pub_key.encode('utf-8')
             self.public_key = serialization.load_pem_public_key(
-                key_file.read()
+                pub_key
                 # backend=default_backend()
             )
 
@@ -97,14 +123,3 @@ class Crypto:
         )
 
         return original_message
-
-if __name__ == '__main__':
-    C = Crypto()
-    C.generate_keys()
-    C.store_keys()   # write keys to file
-
-    encrypted = C.encrypt('This is my plaintext.')
-
-    decrypted = C.decrypt(encrypted)
-
-    print(decrypted)
