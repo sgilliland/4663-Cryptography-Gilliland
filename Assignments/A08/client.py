@@ -1,139 +1,203 @@
 """
+Sarah Gilliland
+CMPS 4663 - cryptography
+Program 08 - RSA Public Key Encryption
+
 https://requests.readthedocs.io/en/master/user/quickstart/
 """
 import requests
-from crypto_class import Crypto 
-import sys
+import base64
+# Used to Generate Keys
+from crypto_class import Crypto
+#Used to Store Keys and Read in Keys
+from cryptography.hazmat.primitives import serialization
 
-"""
- Its up to you to alter the Crypto class to store keys correctly 
- as well as use them to encrypt messages with the proper public key. 
-"""
-C = Crypto()
+# Global Variables
+TOKEN = 'a29c40228b3be56a4732a12db7f2d8c5'
+UID = '5147600'
+API = 'http://msubackend.xyz/api/?route='
+USERS = {}
+PUBKEYS = {}
 
-"""
- These two statemets generate keys and save them, but with hard
- coded values. Definitely needs changed up. 
-"""
-C.generate_keys()
-C.store_keys()
 
-BASEURL = "http://msubackend.xyz/api/"
+# Method to load the public key
+def loadPubKey(pubkey):
+    return serialization.load_pem_public_key(pubkey)
 
-def editUser(uid,fname,lname,screen_name,email,token):
-    posturl = BASEURL+"?route=postUser"
+
+# Method to get all users public keys from the server
+def pubKey():
+    global PUBKEYS
+    route = 'getPubKey'
+    url = f"{API}{route}&token={TOKEN}&uid={UID}"
+    r = requests.get(url)
+
+    try:
+        keys = r.json()
+    except ValueError as e:
+        print("Invalid Json!!!")
+        print(r.text)
+
+    for key in keys['data']:
+        PUBKEYS[key['uid']] = key
+
+
+# Method to get Users data from server
+def getUsers():
+    global USERS
+    global PUBKEYS
+
+    route = 'getUser'
+    url = f"{API}{route}&token={TOKEN}&uid={UID}"
+    r = requests.get(url)
+
+    try:
+        users = r.json()
+    except ValueError as e:
+        print("Invalid Json!!!")
+        print(r.text)
+
+    for user in users['data']:
+        if user['uid'] in PUBKEYS:
+            user['pubkey'] = PUBKEYS[user['uid']]['pubkey']
+            USERS[user['uid']] = user
+
+
+# Method to get Active users from server
+def getActive():
+    route = 'getActive'
+    url = f"{API}{route}&token={TOKEN}&uid={UID}"
+    r = requests.get(url)
+
+    active_users = r.json()
+    active_users = active_users['data']
+
+    real_active_users = []
+    for active in active_users:
+        active['fname'] = USERS[active['uid']]['fname']
+        active['lname'] = USERS[active['uid']]['lname']
+        active['email'] = USERS[active['uid']]['email']
+        active['pubkey'] = PUBKEYS[active['uid']]
+        real_active_users.append(active)
+
+    return real_active_users
+
+
+# Method to encrypt a message and publish the encrypted message to server
+def postMessage(message,to_uid):
+    print(f"Posting message to {USERS[to_uid]['fname']} {USERS[to_uid]['lname']}...")
+
+    route = 'postMessage'
+    url = f"{API}{route}&token={TOKEN}&uid={UID}"
+
+    A = Crypto()
+    A.load_keys(PUBKEYS[to_uid]['pubkey'])
+
+    encrypted = A.encrypt(message)
+    encrypted_bytes = base64.b64encode(encrypted)
+    message = encrypted_bytes.decode('utf-8')
+
     payload = {
-        'uid':uid,
-        'fname':fname,
-        'lname':lname,
-        'screen_name':screen_name,
-        'email':email,
-        'token':token
+       'uid':UID,
+       'to_uid':to_uid,
+       'message':message,
+       'token':TOKEN
     }
+
     headers = {'Content-Type': 'application/json'}
-    r = requests.post(posturl, headers=headers, json=payload)
-    return r.text
+    r = requests.post(url, headers=headers, json=payload)
+    return r.json()
 
 
-def publishKey(uid,token,pubkey):
-    posturl = BASEURL+"?route=postPubKey"
+# Method to publish the public key to the server
+def publishKey(pubkey):
+    route = 'postPubKey'
+    url = f"{API}{route}&token={TOKEN}&uid={UID}"
+
     payload = {
         'pub_key':pubkey,
-        'uid':uid,
-        'token':token
+        'uid':UID,
+        'token':TOKEN
     }
     headers = {'Content-Type': 'application/json'}
-    r = requests.post( posturl, headers=headers, json=payload)
-    return r.text
+    r = requests.post( url, headers=headers, json=payload)
+    return r.json()
 
 
-def sendMessage(from_id,to_id,message,token):
-    posturl = BASEURL+"?route=postMessage"
-    payload = {
-       'from_id':from_id,
-       'to_id':to_id,
-       'message':message,
-       'token':token
-    }
+# Method to get the users messages from the server
+# count = how many messages, starting from the most recent
+def getMessages(count=1, latest=True):
+    """ Gets decrypted messages from the server. """
 
-    headers = {'Content-Type': 'application/json'}
-    r = requests.post(posturl, headers=headers, json=payload)
-    return r.text
+    print("Checking for new messages...")
 
-def getUser(**kwargs):
-    getUrl = BASEURL+"?route=getUser"
+    route = 'getMessage'
+    url = f"{API}{route}&token={TOKEN}&uid={UID}&count={count}"
+    r = requests.get(url)
 
-    params = {}
-    params['token'] = kwargs.get('token',0)
-    params['uid'] = kwargs.get('uid',0)
-    params['email'] = kwargs.get('email',0)
-    params['fname']  = kwargs.get('fname',0)
-    params['lname']  = kwargs.get('lname',0)
+    D = Crypto()
+    D.load_keys(priv_file="my_private_key.txt")
 
-    if params['token'] == 0 or params['uid'] == 0:
-        print("Error: need tokan and uid")
-        sys.exit()
-    
-    for k,v in params.items():
-        getUrl += f"&{k}={v}"
+    messages = r.json()
+    messages = messages['data']         # get all the messages received from other users
 
-    r = requests.get(getUrl)
-    return r.text
+    for message in messages:
+        fid, received = message['fid'], message['message']         # grabs most recent message and user's id
+        received_bytes = received.encode('utf-8')               # prepares message
+        received = base64.decodebytes(received_bytes)           # for decryption
 
-def getActive(**kwargs):
-    getUrl = BASEURL+"?route=getUser"
+        try:
+            decrypted = D.decrypt(received)         #decrypts message
+            print(f"\nfrom: {USERS[fid]['fname']} {USERS[fid]['lname']}")
+            print("message:", decrypted, '\n')
+        except ValueError:
+            print(f"\nfrom: {USERS[fid]['fname']} {USERS[fid]['lname']}")
+            print("message:", received, '\n')
 
-    params = {}
-    params['token'] = kwargs.get('token',0)
-    params['uid'] = kwargs.get('uid',0)
 
-    if params['token'] == 0 or params['uid'] == 0:
-        print("Error: need tokan and uid")
-        sys.exit()
-    
-    for k,v in params.items():
-        getUrl += f"&{k}={v}"
 
-    r = requests.get(getUrl)
-    return r.text
+if __name__ == '__main__':
+    # intial commands to retrieve information
+    pubKey()
+    getUsers()
 
-def getKeys(**kwargs):
-    getUrl = BASEURL+"?route=getUser"
+    '''
+    # Generating new keys
+    C = Crypto()
+    public_key = C.generate_keys()
+    C.store_keys()
+    publishKey(public_key)
+    '''
 
-    params = {}
-    params['token'] = kwargs.get('token',0)
-    params['uid'] = kwargs.get('uid',0)
+    # print a menu
+    choice = input("\nEnter the number of the action you would like to take:\n1. Check for messages\n2.Send a message\n3.Quit\n")
 
-    if params['token'] == 0 or params['uid'] == 0:
-        print("Error: need tokan and uid")
-        sys.exit()
-    
-    for k,v in params.items():
-        getUrl += f"&{k}={v}"
+    while (choice != "3" and choice != "3."):
+      ############################## Check the messages
+      if (choice == '1' or choice == "1."):
+        message_count = input("How many messages would you like to see? ")
+        # now get the message and decode it
+        getMessages(count = message_count)
+        
+      ############################## Send a message
+      elif(choice == '2' or choice == "2."):
+        # get and display the active users
+        active = getActive()
+        print("Here are the active users right now: ")
+        for a in active:
+          print(a)
 
-    r = requests.get(getUrl)
-    return r.text
+        uidSend = input("Who do you want to send a message to? Enter their uid: ");
+        uidSend_firstName = USERS[uidSend]['fname']
+        
+        print("Message to ", uidSend_firstName)
+        newMessage = input("Type your message here: ");
 
-if __name__== '__main__':
-    token = '52e59d8486f6a67e1ec6c281e665e'
-    uid = '3818'
+        postMessage(newMessage, uidSend)
 
-    # r = sendMessage('3818','8020','Hey Ricky Bobby. You wanna shake n bake?',token)
-    # print(r)
+      
+      ############################## Display the menu again
+      choice = input("\nEnter the number of the action you would like to take:\n1. Check for messages\n2.Send a message\n3.Quit\n")
 
-    key = """-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvI3QjAT3naoP8ZGFwKmc
-9b01//L0uUVKOZH33333333333333333333333333333333V5mxJzGvqYekqg0SL
-VGHkpH33333333333333333333333333333333uBgkJo35hwK8HfIiYtwQxCdDWi
-INA7XYoy5/D11GauZN0a3/7mZU4uDY6iw3Js7wNlm6job93JVGTq4Fc9QGEZz6Pk
-TwIDAQAB
------END PUBLIC KEY-----"""
-
-    r = publishKey(uid,token,key)
-    print(r)
-
-    r = getUser(token=token,uid=uid)
-    print(r)
-
-    r = getActive(token=token,uid=uid)
-    print(r)
+    #5147600 - my uid
+    #5217300 - chad's uid
